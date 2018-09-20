@@ -1,7 +1,7 @@
 # @Author: matt
 # @Date:   2018-09-20 12:37:05
 # @Last Modified by:   Matt Pedler
-# @Last Modified time: 2018-09-20 15:45:50
+# @Last Modified time: 2018-09-20 16:02:58
 #!/bin/sh
 
 CUR_DIR="$( cd "$( dirname "$0}" )" && pwd )"
@@ -13,11 +13,11 @@ echo "Install Prefix = $INSTALL_PREFIX"
 #Download file
 if [ ! -f $CUR_DIR/qt-opensource-linux-x64-5.10.1.run ]; then
     echo "Downloading QT This may take some time"
-    wget http://mirrors.ocf.berkeley.edu/qt/archive/qt/5.10/5.10.1/qt-opensource-linux-x64-5.10.1.run
+    wget -nv http://mirrors.ocf.berkeley.edu/qt/archive/qt/5.10/5.10.1/qt-opensource-linux-x64-5.10.1.run
 elif [[ $(md5sum $CUR_DIR/qt-opensource-linux-x64-5.10.1.run) != "8bc46db7cd82d738fa0015aea0bf7cb1  $CUR_DIR/qt-opensource-linux-x64-5.10.1.run" ]]; then
     echo "MD5 didn't match... Downloading QT again. This may take some time"
     rm -f $CUR_DIR/qt-opensource-linux-x64-5.10.1.run
-    wget http://mirrors.ocf.berkeley.edu/qt/archive/qt/5.10/5.10.1/qt-opensource-linux-x64-5.10.1.run
+    wget -nv http://mirrors.ocf.berkeley.edu/qt/archive/qt/5.10/5.10.1/qt-opensource-linux-x64-5.10.1.run
 else
     echo "File is already downloaded"
 fi
@@ -51,18 +51,16 @@ QT_PLUGINS=$QT/plugins
 QT_QML=$QT/qml 
 QT_MKSPECS=$QT/mkspecs 
 
-chmod +x $QT_BIN/*
-
 # Move easy files
-cp -v -r $QT_BIN $INSTALL_PREFIX
-cp -v -r $QT_LIB $INSTALL_PREFIX
-cp -v -r $QT_LIBEXEC $INSTALL_PREFIX
-cp -v -r $QT_INCLUDE $INSTALL_PREFIX
+cp -v -a $QT_BIN $INSTALL_PREFIX
+cp -v -a $QT_LIB $INSTALL_PREFIX
+cp -v -a $QT_LIBEXEC $INSTALL_PREFIX
+cp -v -a $QT_INCLUDE $INSTALL_PREFIX
 
 # Move harder files
 IP_LIB=$INSTALL_PREFIX/lib/
-cp -v -r $QT_PLUGINS $IP_LIB
-cp -v -r $QT_QML $IP_LIB
-cp -v -r $QT_MKSPECS $IP_LIB
+cp -v -a $QT_PLUGINS $IP_LIB
+cp -v -a $QT_QML $IP_LIB
+cp -v -a $QT_MKSPECS $IP_LIB
 
 echo "Finished!"
