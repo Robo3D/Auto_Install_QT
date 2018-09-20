@@ -1,7 +1,7 @@
 # @Author: matt
 # @Date:   2018-09-20 12:37:05
-# @Last Modified by:   matt
-# @Last Modified time: 2018-09-20 13:52:33
+# @Last Modified by:   Matt Pedler
+# @Last Modified time: 2018-09-20 15:45:50
 #!/bin/sh
 
 CUR_DIR="$( cd "$( dirname "$0}" )" && pwd )"
@@ -35,7 +35,7 @@ INSTALL_SCRIPT=$CUR_DIR/auto_install.qs
 INSTALL_LOC=$CUR_DIR/qt
 
 echo "Running installer for QT"
-chmod a+x $INSTALLER
+chmod +x $INSTALLER
 $INSTALLER -v --platform minimal --script $INSTALL_SCRIPT QT_AUTOINSTALL_DIR=$INSTALL_LOC
 
 echo "Moving Files"
@@ -50,6 +50,8 @@ QT_INCLUDE=$QT/include
 QT_PLUGINS=$QT/plugins 
 QT_QML=$QT/qml 
 QT_MKSPECS=$QT/mkspecs 
+
+chmod +x $QT_BIN/*
 
 # Move easy files
 cp -v -r $QT_BIN $INSTALL_PREFIX
