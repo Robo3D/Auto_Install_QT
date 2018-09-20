@@ -1,0 +1,1 @@
+project(auto_qt_install)
