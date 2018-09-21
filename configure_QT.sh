@@ -1,7 +1,7 @@
 # @Author: matt
 # @Date:   2018-09-20 12:37:05
 # @Last Modified by:   Matt Pedler
-# @Last Modified time: 2018-09-20 17:48:15
+# @Last Modified time: 2018-09-20 18:02:49
 #!/bin/sh
 
 CUR_DIR="$( cd "$( dirname "$0}" )" && pwd )"
@@ -38,47 +38,6 @@ echo "Running installer for QT"
 chmod +x $INSTALLER
 $INSTALLER -v --platform minimal --script $INSTALL_SCRIPT QT_AUTOINSTALL_DIR=$INSTALL_LOC
 
-ln -s $INSTALL_LOC/5.10.1/gcc_64/bin $INSTALL_PREFIX/bin
-
-# echo "Moving Files"
-
-# echo "Moving Docs"
-# QT_DOCS=$INSTALL_LOC/Docs/Qt-5.10.1
-# mkdir /Docs/Qt-5.10.1
-# cp -a $QT_DOCS /Docs/Qt-5.10.1/
-
-# echo "Moving Headers"
-# QT_INCLUDE=$INSTALL_LOC/5.10.1/gcc_64/include
-# cp -a $QT_INCLUDE $INSTALL_PREFIX
-
-# echo "Moving libs"
-# QT_INSTALL_LIBS=$INSTALL_LOC/5.10.1/gcc_64/lib
-# cp -a $QT_INSTALL_LIBS $INSTALL_PREFIX
-
-# echo "Moving Libexecs"
-# QT_INSTALL_LIBEXECS=$INSTALL_LOC/5.10.1/gcc_64/libexec
-# cp -a $QT_INSTALL_LIBEXECS $INSTALL_PREFIX
-
-# echo "Moving Bins"
-# QT_INSTALL_BINS=$INSTALL_LOC/5.10.1/gcc_64/bin
-# cp -a $QT_INSTALL_BINS $INSTALL_PREFIX
-
-# echo "Moving Tests"
-# QT_INSTALL_TESTS=$INSTALL_LOC/5.10.1/gcc_64/tests
-# mkdir $INSTALL_PREFIX/tests
-# cp -a $QT_INSTALL_TESTS $INSTALL_PREFIX
-
-# echo "Moving Plugins"
-# QT_INSTALL_PLUGINS=$INSTALL_LOC/5.10.1/gcc_64/plugins
-
-
-
-
-
-
-
-
-
-
+ln -s $INSTALL_LOC/5.10.1/gcc_64/bin/* $INSTALL_PREFIX/bin/
 
 echo "Finished!"
