@@ -1,14 +1,14 @@
 # @Author: matt
 # @Date:   2018-09-20 12:37:05
 # @Last Modified by:   Matt Pedler
-# @Last Modified time: 2018-09-20 18:02:49
+# @Last Modified time: 2018-09-20 18:22:51
 #!/bin/sh
 
 CUR_DIR="$( cd "$( dirname "$0}" )" && pwd )"
-INSTALL_PREFIX="$( cd "$( dirname "$1}" )" && pwd )"
+INSTALL_LOC="$( cd "$( dirname "$1}" )" && pwd )"
 
 echo "Current Dir = $CUR_DIR"
-echo "Install Prefix = $INSTALL_PREFIX"
+echo "Install Location = $INSTALL_LOC"
 
 #Download file
 if [ ! -f $CUR_DIR/qt-opensource-linux-x64-5.10.1.run ]; then
@@ -32,12 +32,8 @@ fi
 
 INSTALLER=$CUR_DIR/qt-opensource-linux-x64-5.10.1.run
 INSTALL_SCRIPT=$CUR_DIR/auto_install.qs
-INSTALL_LOC=$CUR_DIR/qt
 
 echo "Running installer for QT"
 chmod +x $INSTALLER
 $INSTALLER -v --platform minimal --script $INSTALL_SCRIPT QT_AUTOINSTALL_DIR=$INSTALL_LOC
-
-ln -s $INSTALL_LOC/5.10.1/gcc_64/bin/* $INSTALL_PREFIX/bin/
-
-echo "Finished!"
+echo "Finished installing QT at $INSTALL_LOC"
